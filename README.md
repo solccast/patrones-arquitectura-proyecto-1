@@ -5,5 +5,5 @@ Repositorio relacionado con la materia Patrones de Arquitectura de Software - 20
 
 | Legajo    | Nombre completo   |
 | -- | -- |
-| | Kumichel, Franco Leandro    |
-| 22277/2   | Chilaca Castro, Sol Angela    |
+| 17773/0 | Kumichel, Franco Leandro    |
+| 22277/2 | Chilaca Castro, Sol Angela    |
