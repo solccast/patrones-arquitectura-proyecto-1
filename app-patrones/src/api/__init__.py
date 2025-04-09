@@ -1,5 +1,5 @@
 from flask import Flask
-from src.api import config
+from src.api.config import config
 
 def create_app(env="development", static_folder="../../static"):
 
