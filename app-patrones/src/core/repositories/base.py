@@ -1,28 +1,37 @@
-from abc import ABC, abstractmethod
-from src.app import db
+from typing import TypeVar, Generic, Type
+from src.core.database import db
 
-class BaseRepository(ABC):
-    model = None  
-    
-    def __init__(self):
-        if self.model is None:
-            raise NotImplementedError("Debe definir el atributo 'model' en el repositorio.")
+T = TypeVar('T')
 
-    def crear(self, **kwargs):
-        instancia = self.model(**kwargs)
-        db.session.add(instancia)
+class BaseRepository(Generic[T]):
+    model: Type[T]
+
+    @classmethod
+    def get_all(cls):
+        return cls.model.query.all()
+
+    @classmethod
+    def get_by_id(cls, id):
+        return cls.model.query.get(id)
+
+    @classmethod
+    def create(cls, **kwargs):
+        instance = cls.model(**kwargs)
+        db.session.add(instance)
         db.session.commit()
-        return instancia
+        return instance
 
-    def obtener_por_id(self, id):
-        return self.model.query.get(id)
-
-    def eliminar(self, instancia):
-        db.session.delete(instancia)
+    @classmethod
+    def update(cls, id, data: dict):
+        instance = cls.get_by_id(id)
+        for key, value in data.items():
+            setattr(instance, key, value)
         db.session.commit()
+        return instance
 
-    def actualizar(self, instancia, **kwargs):
-        for attr, value in kwargs.items():
-            setattr(instancia, attr, value)
+    @classmethod
+    def delete(cls, id):
+        instance = cls.get_by_id(id)
+        db.session.delete(instance)
         db.session.commit()
-        return instancia
+        return instance
