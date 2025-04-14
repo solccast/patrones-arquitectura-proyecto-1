@@ -7,16 +7,14 @@ def init_app(app):
     config_db(app)
 
 def config_db(app):
-    @app.teardown_appcontext
-    def shutdown_session(exception=None):
-        db.session.remove()
-
+	" Configuracion de la aplicacion "
+	@app.teardown_request
+	def close_session(exception=None):
+		db.session.close()
+		
 def reset_db():
-    try:
-        print("Eliminando BD...")
-        db.drop_all()
-        print("Creando BD...")
-        db.create_all()
-        print("Listo...")
-    except Exception as e:
-        print(f"Error al resetear la base de datos: {e}")
+    print("Eliminando BD...")
+    db.drop_all()
+    print("Creando BD...")
+    db.create_all()
+    print("Listo...")

@@ -1,4 +1,4 @@
-from src.app import db
+from src.core.database.db import db
 import enum
 
 class Tipo(enum.Enum):
@@ -19,8 +19,7 @@ class Direccion(db.Model):
     tipo = db.Column(db.Enum(Tipo), default="FACTURACION")  # facturacion, residencial, laboral
     es_principal = db.Column(db.Boolean)
 
-    id_persona = db.Column(db.Integer, db.ForeignKey("personas.id"), nullable=False)
-    persona = db.relationship("Persona", back_populates="direcciones")
+    id_persona = db.Column(db.Integer, db.ForeignKey("personas.id"))
 
     def __repr__(self):
         return f"<Direccion {self.calle} {self.numero} ({self.localidad})>"

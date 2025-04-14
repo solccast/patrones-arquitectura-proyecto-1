@@ -1,5 +1,5 @@
 from typing import TypeVar, Generic, Type
-from src.core.database import db
+from src.core.database.db import db
 
 T = TypeVar('T')
 

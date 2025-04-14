@@ -1,7 +1,5 @@
-# src/core/models/persona.py
-
-from src.app import db
-from datetime import date
+from src.core.database.db import db
+from src.core.models.direccion import Direccion
 
 class Persona(db.Model):
     __tablename__ = "personas"
@@ -11,8 +9,8 @@ class Persona(db.Model):
     apellido = db.Column(db.String(100), nullable=False)
     dni = db.Column(db.String(20), unique=True, nullable=False)
     edad = db.Column(db.Integer, nullable=False)
-    palabra_clave = db.Column(db.String(100), nullable=False)
-    fecha_nacimiento = db.Column(db.Date, nullable=False)
+    palabra_clave = db.Column(db.String(100))
+    fecha_nacimiento = db.Column(db.Date)
 
     direcciones = db.relationship("Direccion", backref="persona", lazy=True)
 
