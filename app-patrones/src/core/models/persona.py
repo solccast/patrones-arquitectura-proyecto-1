@@ -8,7 +8,6 @@ class Persona(db.Model):
     nombre = db.Column(db.String(100), nullable=False)
     apellido = db.Column(db.String(100), nullable=False)
     dni = db.Column(db.String(20), unique=True, nullable=False)
-    edad = db.Column(db.Integer, nullable=False)
     palabra_clave = db.Column(db.String(100))
     fecha_nacimiento = db.Column(db.Date)
 

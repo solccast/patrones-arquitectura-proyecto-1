@@ -65,7 +65,6 @@ def cargar_seeds():
             "fecha_nacimiento": date(1990, 1, 1),
             "direcciones": [direccion_1, direccion_2],
             "dni": "12345678",
-            "edad": 33,
         }
     )
 
@@ -76,7 +75,6 @@ def cargar_seeds():
             "fecha_nacimiento": date(1995, 5, 15),
             "direcciones": [direccion_3],
             "dni": "87654321",
-            "edad": 28,
         }
     )
 
@@ -87,7 +85,6 @@ def cargar_seeds():
             "fecha_nacimiento": date(1985, 10, 20),
             "direcciones": [direccion_4],
             "dni": "23456789",
-            "edad": 37,
         }
     )
 
@@ -97,7 +94,6 @@ def cargar_seeds():
             "apellido": "López",
             "fecha_nacimiento": date(1992, 3, 30),
             "dni": "34567890",
-            "edad": 31,
         }
     )
 
@@ -107,6 +103,5 @@ def cargar_seeds():
             "apellido": "García",
             "fecha_nacimiento": date(1988, 7, 25),
             "dni": "45678901",
-            "edad": 35,
         }
     )
