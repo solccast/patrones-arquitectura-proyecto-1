@@ -1,0 +1,35 @@
+# Archivos y carpetas de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+# Entornos virtuales locales
+.venv/
+env/
+venv/
+
+# Archivos de configuración y entorno
+.env
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# Archivos de Docker y compose
+Dockerfile
+docker-compose.yml
+
+# Carpetas de documentación y pruebas
+.docs/
+tests/
+
+# Archivos y logs innecesarios
+*.log
+*.md
+*.bak
+*.swp
+*.tmp

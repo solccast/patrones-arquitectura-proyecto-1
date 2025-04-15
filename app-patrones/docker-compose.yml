@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes: 
+    #Este volumen es para que los cambios en el código se reflejen inmediatamente en el contenedor
+      - .:/proyecto-patrones
+
