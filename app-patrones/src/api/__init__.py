@@ -21,4 +21,8 @@ def create_app(env="development", static_folder="../../static"):
         db.reset_db()
         seeds.cargar_seeds()
 
+    @app.route('/')
+    def index():
+        return "API de Patrones de Arquitectura"
+    
     return app
