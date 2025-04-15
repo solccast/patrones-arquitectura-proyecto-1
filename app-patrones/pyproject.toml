@@ -10,6 +10,7 @@ packages = [{include = "app_patrones", from = "src"}]
 python = "^3.11"
 flask = "^3.1.0"
 flask-sqlalchemy = "^3.1.1"
+marshmallow = "^3.26.1"
 
 
 [build-system]
