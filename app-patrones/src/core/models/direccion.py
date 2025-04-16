@@ -17,7 +17,7 @@ class Direccion(db.Model):
     pais = db.Column(db.String(100), nullable=False)
     codigo_postal = db.Column(db.String(20))
     tipo = db.Column(db.Enum(Tipo), default="FACTURACION")  # facturacion, residencial, laboral
-    es_principal = db.Column(db.Boolean)
+    es_principal = db.Column(db.Boolean, default=False)
 
     id_persona = db.Column(db.Integer, db.ForeignKey("personas.id"))
 

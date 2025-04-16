@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, validates, ValidationError
 from datetime import date
-from src.api.dto.direccion import DireccionDTOSchema
+from src.api.dto.direccion import DireccionDTOSchema, CreateDireccionDTOSchema
 
 class PersonaDTOSchema(Schema):
     nombre = fields.Method("get_nombre_completo")
@@ -25,6 +25,7 @@ class CreatePersonaDTOSchema(Schema):
     dni = fields.String(required=True, error_messages={"required": "El DNI es requerido."})
     fecha_nacimiento = fields.Date(required=False, error_messages={"invalid": "La fecha de nacimiento debe tener el formato YYYY-MM-DD"})
     palabra_clave = fields.String(required=False)
+    direcciones = fields.Nested(CreateDireccionDTOSchema, many=True)
 
     @validates("dni")
     def validate_dni(self, value):
