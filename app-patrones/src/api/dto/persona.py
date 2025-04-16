@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, validates, ValidationError
+from marshmallow import Schema, fields, validates, ValidationError, validate
 from datetime import date
 from src.api.dto.direccion import DireccionDTOSchema, CreateDireccionDTOSchema
 
@@ -20,11 +20,11 @@ class PersonaDTOSchema(Schema):
         return None
 
 class CreatePersonaDTOSchema(Schema):
-    nombre = fields.String(required=True, error_messages={"required": "El nombre es requerido."})
-    apellido = fields.String(required=True, error_messages={"required": "El apellido es requerido."})
+    nombre = fields.String(required=True, validate=validate.Length(max=100, error="El nombre no puede exceder los 100 caracteres."), error_messages={"required": "El nombre es requerido."})
+    apellido = fields.String(required=True, validate=validate.Length(max=100, error="El apellido no puede exceder los 100 caracteres."), error_messages={"required": "El apellido es requerido."})
     dni = fields.String(required=True, error_messages={"required": "El DNI es requerido."})
     fecha_nacimiento = fields.Date(required=False, error_messages={"invalid": "La fecha de nacimiento debe tener el formato YYYY-MM-DD"})
-    palabra_clave = fields.String(required=False)
+    palabra_clave = fields.String(required=False, validate=validate.Length(max=100, error="La palabra clave no puede exceder los 100 caracteres."))
     direcciones = fields.Nested(CreateDireccionDTOSchema, many=True)
 
     @validates("dni")
