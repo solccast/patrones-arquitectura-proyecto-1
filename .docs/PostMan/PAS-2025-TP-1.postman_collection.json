@@ -8,6 +8,201 @@
 	},
 	"item": [
 		{
+			"name": "Crear persona",
+			"item": [
+				{
+					"name": "Datos completos y válidos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Alberto\",\r\n    \"apellido\": \"Perez Tomassi\",\r\n    \"dni\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"2001-02-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/personas",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"personas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ausencia de campos requeridos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha_nacimiento\": \"2001-02-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/personas/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"personas",
+								""
+							]
+						},
+						"description": "Ruta encargada de crear un"
+					},
+					"response": []
+				},
+				{
+					"name": "DNI repetido",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Horacio\",\r\n    \"apellido\": \"Martinez\",\r\n    \"dni\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"2001-02-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/personas/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"personas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fecha de nacimiento más allá de la fecha actual",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Lucrecia Tiner\",\r\n    \"apellido\": \"Fernandez\",\r\n    \"palabra_clave\": \"Pollo\",\r\n    \"fecha_nacimiento\": \"2026-02-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/personas/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"personas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Formato de fecha no válido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Alberto\",\r\n    \"apellido\": \"Perez Tomassi\",\r\n    \"dni\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"02-01-1990\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/personas/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"personas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Campos superan la extensión permitida",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Donato metus ipsum, ultrices non tincidunt non, tristique ornare felis. Sed dictum tristique mauris venenatis ornare. Duis elit odio, tincidunt et convallis id, consequat vitae nisl. Donec consectetur lobortis dolor. Proin sit amet velit imperdiet, tristique mauris eget, maximus odio. Duis sagittis congue neque rhoncus luctus. Maecenas vulputate nisi vitae nunc volutpat, rhoncus interdum massa tempus. Pellentesque vitae diam tortor. Sed eget posuere nisl. Etiam varius dictum enim a suscipit. Vestibulum ipsum ante, interdum quis hendrerit tempor, vehicula sit amet tellus. Integer id lorem sit amet elit bibendum rutrum. Aliquam ante risus, varius sit amet orci eget, ullamcorper rutrum enim. Proin nulla ante, consequat vitae orci a, laoreet fringilla augue. Sed posuere lacus eget augue tristique, id luctus diam dapibus. In non vestibulum odio. Ut iaculis justo nisi, eu feugiat nisl pretium eget. Nullam ligula ex, sagittis sit amet semper et, ullamcorper in leo. Pellentesque commodo eu risus nec fringilla. Curabitur sed lacinia lorem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget metus ligula. Donec egestas risus id felis ultrices, vitae vulputate neque semper. Integer sit amet libero in nibh viverra accumsan id eget felis. Etiam tellus ante, blandit et dolor nec, efficitur mollis nisi. Nunc eget porta orci. Cras malesuada posuere dui a dignissim. Suspendisse potenti. Pellentesque id pharetra nisl. Curabitur finibus ex et enim faucibus, sed cursus ipsum fermentum. Curabitur dictum consequat imperdiet. Nunc suscipit, erat a vehicula accumsan, erat nunc consectetur risus, eu feugiat leo sem a odio. Sed tempus euismod congue. Mauris condimentum odio dolor. Quisque quis lorem id dolor placerat blandit sit amet a quam. Donec pretium mauris sit amet lorem convallis, vitae eleifend augue posuere. Quisque in nibh vitae est hendrerit posuere. Quisque eget scelerisque tellus, eget consectetur erat. In pharetra augue vel leo tempor semper. \",\r\n    \"apellido\": \"Perez Tomassi Donec metus ipsum, ultrices non tincidunt non, tristique ornare felis. Sed dictum tristique mauris venenatis ornare. Duis elit odio, tincidunt et convallis id, consequat vitae nisl. Donec consectetur lobortis dolor. Proin sit amet velit imperdiet, tristique mauris eget, maximus odio. Duis sagittis congue neque rhoncus luctus. Maecenas vulputate nisi vitae nunc volutpat, rhoncus interdum massa tempus. Pellentesque vitae diam tortor. Sed eget posuere nisl. Etiam varius dictum enim a suscipit. Vestibulum ipsum ante, interdum quis hendrerit tempor, vehicula sit amet tellus. Integer id lorem sit amet elit bibendum rutrum. Aliquam ante risus, varius sit amet orci eget, ullamcorper rutrum enim. Proin nulla ante, consequat vitae orci a, laoreet fringilla augue. Sed posuere lacus eget augue tristique, id luctus diam dapibus. In non vestibulum odio. Ut iaculis justo nisi, eu feugiat nisl pretium eget. Nullam ligula ex, sagittis sit amet semper et, ullamcorper in leo. Pellentesque commodo eu risus nec fringilla. Curabitur sed lacinia lorem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget metus ligula. Donec egestas risus id felis ultrices, vitae vulputate neque semper. Integer sit amet libero in nibh viverra accumsan id eget felis. Etiam tellus ante, blandit et dolor nec, efficitur mollis nisi. Nunc eget porta orci. Cras malesuada posuere dui a dignissim. Suspendisse potenti. Pellentesque id pharetra nisl. Curabitur finibus ex et enim faucibus, sed cursus ipsum fermentum. Curabitur dictum consequat imperdiet. Nunc suscipit, erat a vehicula accumsan, erat nunc consectetur risus, eu feugiat leo sem a odio. Sed tempus euismod congue. Mauris condimentum odio dolor. Quisque quis lorem id dolor placerat blandit sit amet a quam. Donec pretium mauris sit amet lorem convallis, vitae eleifend augue posuere. Quisque in nibh vitae est hendrerit posuere. Quisque eget scelerisque tellus, eget consectetur erat. In pharetra augue vel leo tempor semper.\",\r\n    \"dni\": \"40990000\",\r\n    \"palabra_clave\": \"Lechuga Donato metus ipsum, ultrices non tincidunt non, tristique ornare felis. Sed dictum tristique mauris venenatis ornare. Duis elit odio, tincidunt et convallis id, consequat vitae nisl. Donec consectetur lobortis dolor. Proin sit amet velit imperdiet, tristique mauris eget, maximus odio. Duis sagittis congue neque rhoncus luctus. Maecenas vulputate nisi vitae nunc volutpat, rhoncus interdum massa tempus. Pellentesque vitae diam tortor. Sed eget posuere nisl. Etiam varius dictum enim a suscipit. Vestibulum ipsum ante, interdum quis hendrerit tempor, vehicula sit amet tellus. Integer id lorem sit amet elit bibendum rutrum. Aliquam ante risus, varius sit amet orci eget, ullamcorper rutrum enim. Proin nulla ante, consequat vitae orci a, laoreet fringilla augue. Sed posuere lacus eget augue tristique, id luctus diam dapibus. In non vestibulum odio. Ut iaculis justo nisi, eu feugiat nisl pretium eget. Nullam ligula ex, sagittis sit amet semper et, ullamcorper in leo. Pellentesque commodo eu risus nec fringilla. Curabitur sed lacinia lorem.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget metus ligula. Donec egestas risus id felis ultrices, vitae vulputate neque semper. Integer sit amet libero in nibh viverra accumsan id eget felis. Etiam tellus ante, blandit et dolor nec, efficitur mollis nisi. Nunc eget porta orci. Cras malesuada posuere dui a dignissim. Suspendisse potenti. Pellentesque id pharetra nisl. Curabitur finibus ex et enim faucibus, sed cursus ipsum fermentum. Curabitur dictum consequat imperdiet. Nunc suscipit, erat a vehicula accumsan, erat nunc consectetur risus, eu feugiat leo sem a odio. Sed tempus euismod congue. Mauris condimentum odio dolor. Quisque quis lorem id dolor placerat blandit sit amet a quam. Donec pretium mauris sit amet lorem convallis, vitae eleifend augue posuere. Quisque in nibh vitae est hendrerit posuere. Quisque eget scelerisque tellus, eget consectetur erat. In pharetra augue vel leo tempor semper.s\",\r\n    \"fecha_nacimiento\": \"2001-02-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/personas/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"personas",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Mediante el método POST y el envío de la información en el body del request se registra a una persona en el sistema. Se realizan las validaciones necesarias."
+		},
+		{
 			"name": "Listado personas",
 			"request": {
 				"auth": {
@@ -16,120 +211,19 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/api/personas/",
+					"raw": "http://{{host}}:{{port}}/api/personas/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{host}}"
 					],
-					"port": "5000",
+					"port": "{{port}}",
 					"path": [
 						"api",
 						"personas",
 						""
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Crear persona: datos completos y válidos",
-			"request": {
-				"auth": {
-					"type": "noauth"
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Juan Alberto\",\r\n    \"apellido\": \"Perez Tomassi\",\r\n    \"DNI\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/api/persona/",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"persona",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Crear persona: datos requeridos incompletos",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Juan Alberto\",\r\n    \"apellido\": \"Perez Tomassi\",\r\n    \"DNI\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/api/persona/",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"persona",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Crear persona: datos no válidos",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Juan Alberto\",\r\n    \"apellido\": 404,\r\n    \"DNI\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/api/persona/",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"persona",
-						""
-					]
-				}
+				"description": "Se encarga de obtener el listado de todas las personas registradas en el sistema. Se obtiene (en formato JSON): nombre completo, DNI y edad."
 			},
 			"response": []
 		}
