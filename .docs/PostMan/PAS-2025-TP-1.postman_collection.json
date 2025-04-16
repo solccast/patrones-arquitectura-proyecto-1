@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "1ffc7e42-b1e8-4c27-aad4-5fa4d269722c",
+		"name": "PAS-2025-TP-1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28020313",
+		"_collection_link": "https://pas-2024-tp-1-api.postman.co/workspace/proyecto-entrega-1~b4110a97-26f7-4b44-93a0-1630ac86f9e6/collection/28020313-1ffc7e42-b1e8-4c27-aad4-5fa4d269722c?action=share&source=collection_link&creator=28020313"
+	},
+	"item": [
+		{
+			"name": "Listado personas",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/personas/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"personas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear persona: datos completos y válidos",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Juan Alberto\",\r\n    \"apellido\": \"Perez Tomassi\",\r\n    \"DNI\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/api/persona/",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"persona",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear persona: datos requeridos incompletos",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Juan Alberto\",\r\n    \"apellido\": \"Perez Tomassi\",\r\n    \"DNI\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/api/persona/",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"persona",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear persona: datos no válidos",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Juan Alberto\",\r\n    \"apellido\": 404,\r\n    \"DNI\": \"40999111\",\r\n    \"palabra_clave\": \"Lechuga\",\r\n    \"fecha_nacimiento\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/api/persona/",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"persona",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
