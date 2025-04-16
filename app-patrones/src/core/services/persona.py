@@ -10,4 +10,6 @@ class PersonaService:
 
     @staticmethod
     def crear_persona(data: dict) -> Persona:
+        if PersonaRepository.get_by_dni(data["dni"]):
+            raise ValueError("Ya existe una persona con ese DNI.")
         return PersonaRepository.create(**data)
