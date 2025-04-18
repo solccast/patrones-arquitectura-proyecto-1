@@ -33,3 +33,7 @@ tests/
 *.bak
 *.swp
 *.tmp
+
+# Poetry
+poetry.lock
+pyproject.toml
